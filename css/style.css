@@ -1,0 +1,126 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+h1 {
+    text-align: center;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.vista-previa {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #000;
+    border-radius: 10px;
+}
+
+.tarjeta {
+    position: relative;
+}
+
+#imagen-preview {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Panel de configuración */
+.configuracion {
+    flex: 1;
+    padding: 10px;
+}
+
+/* Estilo de los botones */
+button {
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Estilo del modo oscuro */
+.modo-oscuro {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.modo-oscuro button {
+    background-color: #555555;
+}
+
+.modo-oscuro button:hover {
+    background-color: #777777;
+}
+
+/* Estilo de los campos de entrada */
+input[type="text"],
+input[type="color"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilo para las imágenes */
+.imagenes {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.marco {
+    width: 30%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.marco:hover {
+    transform: scale(1.1);
+}
+
+/* Animaciones de inicio */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.vista-previa,
+.configuracion {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Ocultar el texto cuando no es necesario */
+.datos input:focus + label,
+.datos textarea:focus + label,
+.datos input:not(:placeholder-shown) + label,
+.datos textarea:not(:placeholder-shown) + label {
+    display: none;
+}

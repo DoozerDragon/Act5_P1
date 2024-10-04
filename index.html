@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Tarjetas de Felicitación</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>Crea tu tarjeta de Felicitación</h1>
+
+    <!-- Botón para cambiar el modo oscuro -->
+    <button id="modo-oscuro-toggle">Modo Oscuro</button>
+
+    <br><br>
+    
+    <div class="contenedor">
+        <!-- Vista previa de la tarjeta -->
+        <div class="vista-previa">
+            <h2 id="titulo-preview">Felicidades</h2> <!-- Título -->
+            <h3 id="nombre-preview">Nombre Aquí</h3> <!-- Nombre -->
+            <div class="tarjeta" id="tarjeta-preview">
+                <img src="imagen-ejemplo.png" alt="Imagen de tarjeta" id="imagen-preview">
+                <p id="mensaje-preview">Que pases un feliz día</p> <!-- Mensaje -->
+            </div>
+        </div>
+
+        <!-- Panel de configuración -->
+        <div class="configuracion">
+            <label for="tema">Elige un Tema:</label>
+            <select id="tema">
+                <option value="cumpleaños">Cumpleaños</option>
+                <option value="navidad">Navidad</option>
+                <option value="san-valentin">San Valentín</option>
+            </select>
+
+            <label for="color-fondo">Color de Fondo:</label>
+            <input type="color" id="color-fondo" value="#ffffff">
+
+            <label>Elige un Marco e Imagen:</label>
+            <div class="imagenes">
+                <!-- Aquí se cargarán dinámicamente las imágenes correspondientes al tema -->
+            </div>
+
+            <!-- Campos de texto para personalización -->
+            <div class="datos">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" placeholder="Ingresa el nombre">
+
+                <label for="titulo">Título de la tarjeta:</label>
+                <input type="text" id="titulo" placeholder="Ingresa el título">
+
+                <label for="mensaje">Mensaje de la tarjeta:</label>
+                <textarea id="mensaje" rows="3" placeholder="Ingresa el mensaje"></textarea>
+            </div>
+
+            <button id="mostrar">Mostrar</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
