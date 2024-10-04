@@ -4,6 +4,8 @@ const colorFondoInput = document.getElementById("color-fondo");
 const nombreInput = document.getElementById("nombre");
 const tituloInput = document.getElementById("titulo");
 const mensajeInput = document.getElementById("mensaje");
+const mostrarBtn = document.getElementById("mostrar");
+const modoOscuroBoton = document.getElementById("modo-oscuro-toggle");
 
 const tituloPreview = document.getElementById("titulo-preview");
 const nombrePreview = document.getElementById("nombre-preview");
@@ -52,7 +54,7 @@ temaSelect.addEventListener("change", function() {
     });
 });
 
-// Cambiar el color de fondo
+// Cambiar el color de fondo de la tarjeta en la vista previa
 colorFondoInput.addEventListener("input", function() {
     tarjetaPreview.style.backgroundColor = colorFondoInput.value;
 });
@@ -61,11 +63,13 @@ colorFondoInput.addEventListener("input", function() {
 nombreInput.addEventListener("input", function() {
     const textoNombre = nombreInput.value || "Nombre Aquí";
     nombrePreview.textContent = textoNombre;
+    // No se vacía el título al ingresar nombre
 });
 
 tituloInput.addEventListener("input", function() {
     const textoTitulo = tituloInput.value || "Felicidades";
     tituloPreview.textContent = textoTitulo;
+    // No se vacía el nombre al ingresar título
 });
 
 mensajeInput.addEventListener("input", function() {
@@ -74,15 +78,14 @@ mensajeInput.addEventListener("input", function() {
 });
 
 // Función para mostrar los cambios al hacer clic en "Mostrar"
-document.getElementById("mostrar").addEventListener("click", function() {
+mostrarBtn.addEventListener("click", function() {
     const mensajeFinal = document.createElement("p");
     mensajeFinal.textContent = "¡Tarjeta generada!";
+    mensajeFinal.classList.add("texto-animado"); // Añadir animación al texto
     document.body.appendChild(mensajeFinal);
 });
 
 // Activar/desactivar modo oscuro
-const modoOscuroBoton = document.getElementById("modo-oscuro-toggle");
-
 modoOscuroBoton.addEventListener("click", function() {
     document.body.classList.toggle("modo-oscuro");
 
@@ -92,4 +95,40 @@ modoOscuroBoton.addEventListener("click", function() {
     } else {
         modoOscuroBoton.textContent = "Modo Oscuro";
     }
+});
+
+// Cambio de estilo de fuente en tiempo real
+const cambiarEstiloTexto = (element, propiedad, valor) => {
+    element.style[propiedad] = valor;
+};
+
+// Asignación de posición y estilo de la tarjeta usando classList
+const cambiarPosicionTarjeta = (posicion) => {
+    tarjetaPreview.classList.remove("left", "center", "right");
+    tarjetaPreview.classList.add(posicion);
+};
+
+// Agregar eventos de ejemplo para cambiar posición y estilo
+document.getElementById("posicion-left").addEventListener("click", () => cambiarPosicionTarjeta("left"));
+document.getElementById("posicion-center").addEventListener("click", () => cambiarPosicionTarjeta("center"));
+document.getElementById("posicion-right").addEventListener("click", () => cambiarPosicionTarjeta("right"));
+
+// Cambio del tipo, tamaño y color de letra
+const tipoLetraSelect = document.getElementById("tipo-letra");
+const tamanoLetraSelect = document.getElementById("tamano-letra");
+const colorLetraInput = document.getElementById("color-letra");
+
+// Evento para cambiar tipo de letra
+tipoLetraSelect.addEventListener("change", function() {
+    tarjetaPreview.style.fontFamily = tipoLetraSelect.value;
+});
+
+// Evento para cambiar tamaño de letra
+tamanoLetraSelect.addEventListener("input", function() {
+    tarjetaPreview.style.fontSize = tamanoLetraSelect.value + "px";
+});
+
+// Evento para cambiar color de letra
+colorLetraInput.addEventListener("input", function() {
+    tarjetaPreview.style.color = colorLetraInput.value;
 });

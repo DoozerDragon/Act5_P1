@@ -8,6 +8,7 @@ body {
 
 h1 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .contenedor {
@@ -26,6 +27,8 @@ h1 {
 
 .tarjeta {
     position: relative;
+    border-radius: 10px;
+    margin-top: 20px;
 }
 
 #imagen-preview {
@@ -38,6 +41,8 @@ h1 {
 .configuracion {
     flex: 1;
     padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
 }
 
 /* Estilo de los botones */
@@ -57,17 +62,17 @@ button:hover {
 }
 
 /* Estilo del modo oscuro */
-.modo-oscuro {
-    background-color: #333333;
+body.modo-oscuro {
+    background-color: #333;
     color: #ffffff;
 }
 
-.modo-oscuro button {
-    background-color: #555555;
+body.modo-oscuro button {
+    background-color: #555;
 }
 
-.modo-oscuro button:hover {
-    background-color: #777777;
+body.modo-oscuro button:hover {
+    background-color: #777;
 }
 
 /* Estilo de los campos de entrada */
@@ -80,6 +85,10 @@ select {
     margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+input[type="range"] {
+    width: 100%;
 }
 
 /* Estilo para las imágenes */
@@ -100,6 +109,84 @@ select {
     transform: scale(1.1);
 }
 
+/* Animaciones de texto */
+@keyframes parpadeo {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.texto-animado {
+    animation: parpadeo 1s infinite;
+}
+
+/* Estilo para tarjeta */
+.tarjeta-fondo-verde {
+    background-color: #a5d6a7; /* Fondo verde */
+}
+
+.tarjeta-fondo-azul {
+    background-color: #90caf9; /* Fondo azul */
+}
+
+.tarjeta {
+    padding: 20px;
+    transition: all 0.3s;
+}
+
+.tarjeta:hover {
+    transform: scale(1.05);
+}
+
+/* Ocultar el texto cuando no es necesario */
+.datos input:focus + label,
+.datos textarea:focus + label,
+.datos input:not(:placeholder-shown) + label,
+.datos textarea:not(:placeholder-shown) + label {
+    display: none;
+}
+
+/* Estilo de la vista previa */
+#titulo-preview,
+#nombre-preview,
+#mensaje-preview {
+    margin: 10px 0;
+}
+
+#titulo-preview {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#nombre-preview {
+    font-size: 20px;
+    font-style: italic;
+}
+
+#mensaje-preview {
+    font-size: 16px;
+}
+
+/* Aplicación del modo oscuro en los inputs */
+body.modo-oscuro input,
+body.modo-oscuro textarea,
+body.modo-oscuro select {
+    background-color: #444;
+    color: #ffffff;
+    border: 1px solid #666;
+}
+
+body.modo-oscuro .vista-previa,
+body.modo-oscuro .configuracion {
+    border-color: #777;
+}
+
+/* Botón de modo oscuro en vista previa */
+.modo-oscuro .vista-previa {
+    border-color: #ccc;
+    color: #ffffff;
+}
+
 /* Animaciones de inicio */
 @keyframes fadeIn {
     from {
@@ -115,12 +202,4 @@ select {
 .vista-previa,
 .configuracion {
     animation: fadeIn 0.5s ease forwards;
-}
-
-/* Ocultar el texto cuando no es necesario */
-.datos input:focus + label,
-.datos textarea:focus + label,
-.datos input:not(:placeholder-shown) + label,
-.datos textarea:not(:placeholder-shown) + label {
-    display: none;
 }

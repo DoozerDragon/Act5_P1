@@ -7,14 +7,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <h1>Crea tu tarjeta de Felicitación</h1>
 
-    <!-- Botón para cambiar el modo oscuro -->
     <button id="modo-oscuro-toggle">Modo Oscuro</button>
-
     <br><br>
-    
+
     <div class="contenedor">
         <!-- Vista previa de la tarjeta -->
         <div class="vista-previa">
@@ -37,6 +34,19 @@
 
             <label for="color-fondo">Color de Fondo:</label>
             <input type="color" id="color-fondo" value="#ffffff">
+
+            <label for="tipo-letra">Tipo de Letra:</label>
+            <select id="tipo-letra">
+                <option value="Arial">Arial</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Courier New">Courier New</option>
+            </select>
+
+            <label for="tamano-letra">Tamaño de Letra:</label>
+            <input type="range" id="tamano-letra" min="10" max="36" value="16">
+
+            <label for="color-letra">Color de la Letra:</label>
+            <input type="color" id="color-letra" value="#000000">
 
             <label>Elige un Marco e Imagen:</label>
             <div class="imagenes">
