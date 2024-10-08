@@ -1,4 +1,3 @@
-// Variables para obtener elementos de la página
 const temaSelect = document.getElementById("tema");
 const colorFondoInput = document.getElementById("color-fondo");
 const nombreInput = document.getElementById("nombre");
@@ -13,23 +12,23 @@ const mensajePreview = document.getElementById("mensaje-preview");
 const tarjetaPreview = document.getElementById("tarjeta-preview");
 const imagenPreview = document.getElementById("imagen-preview");
 
-// Conjuntos de imágenes por tema (ruta actualizada a img/nombreImagen)
+//Grupos de imágenes por tema (ruta actualizada a img/nombreImagen)
 const imagenesCumple = ["img/marco_1_cump.png", "img/marco_2_cump.png", "img/marco_3_cump.png"];
 const imagenesNavidad = ["img/marco1.png", "img/marco2.png", "img/marco3.png"];
 const imagenesSanValentin = ["img/marcos_1_san.png", "img/marcos_3_san.png", "img/marcos_3_san.png"];
 
-// Cambiar el conjunto de imágenes según el tema seleccionado
+//Cambiar el grupo de imágenes según el tema seleccionado
 temaSelect.addEventListener("change", function() {
     const tema = temaSelect.value;
     let imagenes = [];
 
-    // Limpiar el contenedor de imágenes antes de agregar nuevas
+    //Limpiar el contenedor de imágenes
     const contenedorImagenes = document.querySelector(".imagenes");
     while (contenedorImagenes.firstChild) {
         contenedorImagenes.removeChild(contenedorImagenes.firstChild);
     }
 
-    // Seleccionar el conjunto de imágenes correcto
+    //Seleccionar el grupo de imágenes
     if (tema === "cumpleaños") {
         imagenes = imagenesCumple;
     } else if (tema === "navidad") {
@@ -38,7 +37,7 @@ temaSelect.addEventListener("change", function() {
         imagenes = imagenesSanValentin;
     }
 
-    // Crear nuevos nodos de imagen para el tema seleccionado
+    //Crear nuevos nodos de imagen para el tema seleccionado
     imagenes.forEach((src) => {
         const img = document.createElement("img");
         img.src = src;
@@ -51,17 +50,17 @@ temaSelect.addEventListener("change", function() {
             tarjetaPreview.style.backgroundPosition = 'center';
         });
 
-        // Agregar el nodo de imagen al contenedor
+        //Agregar el nodo de imagen al contenedo
         contenedorImagenes.appendChild(img);
     });
 });
 
-// Cambiar el color de fondo de la tarjeta en la vista previa
+//Cambiar el color de fondo en la vista previa
 colorFondoInput.addEventListener("input", function() {
     tarjetaPreview.style.backgroundColor = colorFondoInput.value;
 });
 
-// Actualizar los campos de texto en la vista previa
+//Mostrar texto en la vista previa
 nombreInput.addEventListener("input", function() {
     const textoNombre = nombreInput.value || "Nombre Aquí";
     nombrePreview.textContent = textoNombre;
@@ -74,10 +73,10 @@ tituloInput.addEventListener("input", function() {
 
 mensajeInput.addEventListener("input", function() {
     const textoMensaje = mensajeInput.value || "Que pases un feliz día";
-    mensajePreview.textContent = textoMensaje;
+    mensajePreview.textContent = textoMensajeñ-;
 });
 
-// Función para mostrar los cambios al hacer clic en "Mostrar"
+//Mostrar los cambios al hacer clic en "Mostrar"
 mostrarBtn.addEventListener("click", function() {
     const mensajeFinal = document.createElement("p");
     mensajeFinal.textContent = "¡Tarjeta generada!";
@@ -85,7 +84,7 @@ mostrarBtn.addEventListener("click", function() {
     document.body.appendChild(mensajeFinal);
 });
 
-// Activar/desactivar modo oscuro
+//Activar/desactivar modo oscuro
 modoOscuroBoton.addEventListener("click", function() {
     document.body.classList.toggle("modo-oscuro");
 
@@ -97,7 +96,7 @@ modoOscuroBoton.addEventListener("click", function() {
     }
 });
 
-// Cambio del tipo, tamaño y color de letra
+//Cambio del tipo, tamaño y color de letra
 const tipoLetraSelect = document.getElementById("tipo-letra");
 const tamanoLetraSelect = document.getElementById("tamano-letra");
 const colorLetraInput = document.getElementById("color-letra");
