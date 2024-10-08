@@ -23,17 +23,27 @@ h1 {
     text-align: center;
     border: 2px solid #000;
     border-radius: 10px;
+    height: 600px;
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Apilar los elementos verticalmente */
+    justify-content: center; /* Centrar verticalmente */
+    align-items: center; /* Centrar horizontalmente */
 }
 
 .tarjeta {
     position: relative;
     border-radius: 10px;
     margin-top: 20px;
+    display: flex; /* Agregado para usar flexbox */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    flex-direction: column; /* Asegura que los elementos se alineen verticalmente */
+    width: 400px;
 }
 
 #imagen-preview {
-    width: 100%;
-    height: auto;
+    width: 50%; /* Mantener el ancho completo del contenedor */
+    height: 400px;
     border-radius: 10px;
 }
 
@@ -96,17 +106,52 @@ input[type="range"] {
     display: flex;
     justify-content: space-around;
     margin: 10px 0;
+    flex-wrap: wrap; /* Permitir que las imágenes se organicen en varias filas */
 }
 
-.marco {
-    width: 30%;
+.imagenes img {
+    width: 150px; /* Ajustar el tamaño fijo de las imágenes */
     height: auto;
+    margin: 5px; /* Espacio alrededor de cada imagen */
     cursor: pointer;
-    transition: transform 0.3s;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: transform 0.3s, border-color 0.3s;
 }
 
-.marco:hover {
-    transform: scale(1.1);
+.imagenes img:hover {
+    transform: scale(1.05); /* Efecto de agrandamiento */
+    border-color: #007bff; /* Cambiar color de borde al pasar el mouse */
+}
+
+.imagenes img.seleccionada {
+    transform: scale(1.1); /* Agrandar más la imagen seleccionada */
+    border-color: #007bff; /* Borde azul para la imagen seleccionada */
+}
+
+/* Contenedor de imágenes de marcos y portadas */
+.imagenes-marcos,
+.imagenes-portadas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    justify-content: center; /* Alineación centrada */
+}
+
+/* Ajuste del contenedor de marcos */
+.imagenes-marcos img {
+    width: 100px;
+    height: auto;
+}
+
+/* Ajuste del contenedor de portadas */
+.imagenes-portadas img {
+    width: 120px;
+    height: auto;
 }
 
 /* Animaciones de texto */
