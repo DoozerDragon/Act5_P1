@@ -57,20 +57,17 @@ function mostrarImagenesMarcos(tema) {
         contenedorMarcos.removeChild(contenedorMarcos.firstChild);
     }
 
-    //SOLUCIÓN DE IA
-    imagenes.forEach((src) => {
-        const img = document.createElement("img");
-        img.src = src;
-        img.alt = `Marco ${src}`;
-        img.classList.add("marco"); // Asegúrate de que esta clase esté definida en CSS
-        img.addEventListener("click", function () {
-            tarjetaPreview.style.backgroundImage = `url(${img.src})`;
+
+    // Generar todas las imágenes usando un solo 'innerHTML'
+    contenedorMarcos.innerHTML = imagenes.map(src => `<img src="${src}" alt="Marco ${src}" class="marco" />`).join("");
+  
+  // Delegación de eventos al contenedor, en lugar de asignar a cada imagen individual
+    contenedorMarcos.addEventListener("click", function(event) {
+        if (event.target.tagName === "IMG") {  // Verificar que el elemento clicado sea una imagen
+            tarjetaPreview.style.backgroundImage = `url(${event.target.src})`;
             tarjetaPreview.style.backgroundSize = 'cover';
             tarjetaPreview.style.backgroundPosition = 'center';
-            // Forzar un repaint (re-renderizado)
-            tarjetaPreview.offsetHeight; // Esto provoca que el navegador re-evalue el estilo
-        });
-        contenedorMarcos.appendChild(img);
+        }
     });
 }
 
@@ -90,20 +87,26 @@ function mostrarImagenesPortadas(tema) {
     while (contenedorPortadas.firstChild) {
         contenedorPortadas.removeChild(contenedorPortadas.firstChild);
     }
+   
+    // Limpiar el contenedor antes de agregar las imágenes
+contenedorPortadas.innerHTML = '';
 
-    //SOLUCIÓN DE IA    
-    imagenes.forEach((src) => {
-        const img = document.createElement("img");
-        img.src = src;
-        img.alt = `Portada ${src}`;
-        img.classList.add("portada");
-        img.addEventListener("click", function () {
-            console.log(src); // Depuración
-            imagenPreview.src = src; // Cambiar la imagen de la portada en la vista previa
-            imagenPreview.style.display = "block"; // Asegurarse de que la portada esté visible
-        });
-        contenedorPortadas.appendChild(img);
+// Recorrer el arreglo de imágenes usando `for...of`
+for (const src of imagenes) {
+    contenedorPortadas.innerHTML += `
+        <img src="${src}" alt="Portada ${src}" class="portada" />
+    `;
+}
+
+// Añadir el manejador de eventos para capturar los clics en las imágenes
+    contenedorPortadas.addEventListener("click", (event) => {
+        if (event.target.tagName === "IMG") {  //Aquí se  verifica que sea una imagen la que se seleccionó
+            imagenPreview.src = event.target.src; //Se cambia la imagen de vista previa
+            imagenPreview.style.display = "block"; //Verificar que la vista previa esté visible
+            console.log(event.target.src); //Depuración
+        }
     });
+
 }
 
 // Cambiar el grupo de imágenes según el tema seleccionado
