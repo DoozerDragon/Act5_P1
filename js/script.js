@@ -91,6 +91,7 @@ function mostrarImagenesPortadas(tema) {
         contenedorPortadas.removeChild(contenedorPortadas.firstChild);
     }
 
+    //SOLUCIÓN DE IA    
     imagenes.forEach((src) => {
         const img = document.createElement("img");
         img.src = src;
